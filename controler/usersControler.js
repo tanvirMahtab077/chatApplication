@@ -6,13 +6,6 @@ const getUsers = (req, res, next) => {
 const createUser = async (req, res, next) => {
   try {
     const peopleInfo = await peopleModel.find();
-    if(peopleInfo== []){
-            console.log("NO data found!");
-            return res.status(404).json({
-                status: 404,
-                message: 'NO data found!'
-        })
-    }
     peopleInfo.map((data) => {
       if (data.email == req.body.email) {
         console.log("The user is already exist!");
