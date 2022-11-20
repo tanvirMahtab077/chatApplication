@@ -15,15 +15,10 @@ const createUser = async (req, res, next) => {
         });
       }
     });
-    await peopleModel.create(req.body, (err) => {
-      if (err) {
-        console.error(err);
-      } else {
-        res.status(200).json({
-          status: 200,
-          message: "User is created successfully",
-        });
-      }
+    await peopleModel.create(req.body);
+    res.status(200).json({
+      status: 200,
+      message: "User is created successfully",
     });
   } catch (err) {
     console.error(err);
