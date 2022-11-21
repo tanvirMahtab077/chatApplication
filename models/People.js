@@ -17,13 +17,9 @@ const peopleSchema = new mongoose.Schema(
     mobile: {
       type: String,
       required: true,
-      minLength: 11,
-      maxLength: 11,
     },
     password: {
       type: String,
-      minLength: 6,
-      required: true,
     },
     avater: {
       type: String,
