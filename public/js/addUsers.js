@@ -1,20 +1,25 @@
 const form = document.querySelector("#add-user-form");
 const modal = document.querySelector("#add-user-modal");
 
-form.onsubmit = async function (event) {
+form.onsubmit = function (event) {
   event.preventDefault();
-
   const formData = new FormData(form);
-  let response = await fetch("/users/create", {
+
+  fetch("/users/create", {
     method: "POST",
-    body: formData
-  });
+    body: formData,
+  })
+    .then((response) => {
+      let result = response.json();
+      console.log(result.errors);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 
-  let result = await response.json();
-
-  if (result.error) {
-    console.log(result.error);
-  }
+  // if (result.error) {
+  //   console.log(result.error);
+  // }
 };
 
 function closeModal() {
